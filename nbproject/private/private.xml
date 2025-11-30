@@ -5,9 +5,11 @@
         <group>
             <file>file:/home/vlada/NetBeansProjects/Application/src/view/ModelTabeleKnjige.java</file>
             <file>file:/home/vlada/NetBeansProjects/Application/src/model/Knjiga.java</file>
+            <file>file:/home/vlada/NetBeansProjects/Application/src/baza/Konekcija.java</file>
             <file>file:/home/vlada/NetBeansProjects/Application/src/controller/Controller.java</file>
             <file>file:/home/vlada/NetBeansProjects/Application/src/view/GlavnaForma.java</file>
-            <file>file:/home/vlada/NetBeansProjects/Application/src/view/Dodavanje.java</file>
+            <file>file:/home/vlada/NetBeansProjects/Application/src/view/FormaKnjiga.java</file>
+            <file>file:/home/vlada/NetBeansProjects/Application/src/baza/DBBroker.java</file>
             <file>file:/home/vlada/NetBeansProjects/Application/src/model/Autor.java</file>
             <file>file:/home/vlada/NetBeansProjects/Application/src/model/Zanr.java</file>
         </group>

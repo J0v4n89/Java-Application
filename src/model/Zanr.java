@@ -9,6 +9,8 @@ package model;
  * @author vlada
  */
 public enum Zanr {
-    ROMAN, POEZIJA, NAUCNA_FANTASTIKA, ISTORIJSKI;
+    Roman, POEZIJA, NAUCNA_FANTASTIKA, ISTORIJSKI, Novela, Komedija;
+
+    
     
 }

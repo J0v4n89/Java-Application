@@ -26,7 +26,10 @@ public class GlavnaForma extends javax.swing.JFrame {
     public GlavnaForma() {
         initComponents();
         controller = Controller.getInstance();
-        ModelTabeleKnjige modelTabele = new ModelTabeleKnjige(controller.getListaKnjiga());
+        //ModelTabeleKnjige modelTabele = new ModelTabeleKnjige(controller.getListaKnjiga());
+        ModelTabeleKnjige modelTabele = new ModelTabeleKnjige(controller.ucitajKnjigeIzBaze());
+        
+        
         jTable_knjige.setModel(modelTabele);
         
     }
@@ -178,8 +181,10 @@ public class GlavnaForma extends javax.swing.JFrame {
         if (selektovaniRed == -1) {
             JOptionPane.showMessageDialog(this, "Morate selektovati knjigu koju želite obrisati!", "Upozorenje", JOptionPane.WARNING_MESSAGE);
         } else {
+            ModelTabeleKnjige mtk = (ModelTabeleKnjige) jTable_knjige.getModel();
+            int id = mtk.getListaKnjiga().get(selektovaniRed).getId();
             Controller controller = Controller.getInstance();
-            controller.obrisiKnjigu(selektovaniRed);
+            controller.obrisiKnjigu(id);
 
             // Ažuriranje modela tabele
             osveziTabelu();
@@ -189,7 +194,7 @@ public class GlavnaForma extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_knjige_obrisiActionPerformed
 
     private void jButton_dodaj_knjigeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_dodaj_knjigeActionPerformed
-      Dodavanje fk = new Dodavanje(this, true, null);
+      FormaKnjiga fk = new FormaKnjiga(this, true, null);
       fk.setVisible(true);
         
         
@@ -204,8 +209,8 @@ public class GlavnaForma extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Morate selektovati knjigu koju želite obrisati!", "Upozorenje", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Knjiga selektovanaKnjiga = (Knjiga) controller.getInstance().getListaKnjiga().get(selektovaniRed);
-        Dodavanje fk = new Dodavanje(this, true, selektovanaKnjiga);
+        Knjiga selektovanaKnjiga = controller.ucitajKnjigeIzBaze().get(selektovaniRed);
+        FormaKnjiga fk = new FormaKnjiga(this, true, selektovanaKnjiga);
       fk.setVisible(true);
         
     }//GEN-LAST:event_jButton_izmeni_knjigeActionPerformed
@@ -263,8 +268,14 @@ public class GlavnaForma extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     void osveziTabelu() {
-        ModelTabeleKnjige modelTabele = (ModelTabeleKnjige) jTable_knjige.getModel();
-        modelTabele.osveziPodatke();
+       // ModelTabeleKnjige modelTabele = (ModelTabeleKnjige) jTable_knjige.getModel();
+        //modelTabele.osveziPodatke();
+        
+         ModelTabeleKnjige modelTabele = new ModelTabeleKnjige(controller.ucitajKnjigeIzBaze());
+        
+        
+        jTable_knjige.setModel(modelTabele);
+        
         
 }
 }

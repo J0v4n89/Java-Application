@@ -16,7 +16,7 @@ import model.Zanr;
  *
  * @author vlada
  */
-public class Dodavanje extends javax.swing.JDialog {
+public class FormaKnjiga extends javax.swing.JDialog {
 
     /**
      * Creates new form Dodavanje
@@ -27,7 +27,7 @@ public class Dodavanje extends javax.swing.JDialog {
     private Knjiga knjigaZaIzmenu;
     private GlavnaForma gf;
     
-    public Dodavanje(java.awt.Frame parent, boolean modal, Knjiga knjigazaizmenu) {
+    public FormaKnjiga(java.awt.Frame parent, boolean modal, Knjiga knjigazaizmenu) {
         super(parent, modal);
         initComponents();
         controller = Controller.getInstance();
@@ -48,7 +48,7 @@ public class Dodavanje extends javax.swing.JDialog {
         }
     }
 
-    Dodavanje(GlavnaForma aThis, boolean b) {
+    FormaKnjiga(GlavnaForma aThis, boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -224,7 +224,7 @@ public class Dodavanje extends javax.swing.JDialog {
             knjigaZaIzmenu.setNaslov(naziv);
             knjigaZaIzmenu.setGodinaIzdanja(godIzdanja);
             knjigaZaIzmenu.setZanr(zanr);
-
+            controller.azurirajKnjigu(knjigaZaIzmenu);
            gf.osveziTabelu();
            JOptionPane.showMessageDialog(this, "Knjiga je uspesno dodata", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
            this.dispose();
@@ -266,20 +266,21 @@ public class Dodavanje extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dodavanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormaKnjiga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dodavanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormaKnjiga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dodavanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormaKnjiga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dodavanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormaKnjiga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Dodavanje dialog = new Dodavanje((GlavnaForma) new javax.swing.JFrame(), true);
+                FormaKnjiga dialog = new FormaKnjiga((GlavnaForma) new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -309,7 +310,7 @@ public class Dodavanje extends javax.swing.JDialog {
 
     private void popuniComboBoxAutorima() {
         jComboBoxAutori.removeAllItems();
-        List<Autor> autori = controller.getListaAutora();
+        List<Autor> autori = controller.getListaAutoraIzBaze();
         for(Autor autor : autori){
             jComboBoxAutori.addItem(autor);
     }
